@@ -59,3 +59,16 @@ typings/
 
 # next.js build output
 .next
+
+# OS
+.DS_Store
+
+# Don't check auto-generated stuff into git
+build
+stats.json
+
+# IntelliJ project files
+*.iml
+*.iws
+*.ipr
+.idea/
