@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
 
+import LocaleToggle from 'containers/LocaleToggle';
+
 import colors from '../../colors';
 
 import HeaderLink from './HeaderLink';
@@ -33,6 +35,7 @@ function NavBar(props) {
         <LogoTitle href={props.title.href}>{props.title.text}</LogoTitle>
       )}
       {content}
+      {props.locale && <LocaleToggle />}
     </NavBarStyled>
   );
 }
@@ -48,6 +51,7 @@ NavBar.propTypes = {
   logo: PropTypes.object,
   title: PropTypes.object,
   items: PropTypes.array.isRequired,
+  locale: PropTypes.bool,
   theme: PropTypes.object,
 };
 

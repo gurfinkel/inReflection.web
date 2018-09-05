@@ -31,7 +31,7 @@ class Header extends React.Component {
       },
     ];
 
-    return <NavBar logo={logo} title={title} items={headerItems} />;
+    return <NavBar logo={logo} title={title} items={headerItems} locale />;
   }
 }
 
