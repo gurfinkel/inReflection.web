@@ -27,7 +27,7 @@ function NavBar(props) {
   ));
 
   return (
-    <NavBarStyled theme={props.theme}>
+    <NavBarStyled>
       {props.logo && <Logo src={props.logo.src} alt={props.logo.alt} />}
       {props.title && (
         <LogoTitle href={props.title.href}>{props.title.text}</LogoTitle>
@@ -43,6 +43,7 @@ NavBar.defaultProps = {
   },
 };
 
+/* eslint-disable react/no-unused-prop-types */
 NavBar.propTypes = {
   logo: PropTypes.object,
   title: PropTypes.object,

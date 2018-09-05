@@ -35,6 +35,9 @@ import { translationMessages } from './i18n';
 // Import CSS reset and Global Styles
 import './global-styles';
 
+const { ThemeProvider } = require('styled-components');
+const currentTheme = require('./productThemes/blue');
+
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)
 const openSansObserver = new FontFaceObserver('Open Sans', {});
@@ -50,12 +53,14 @@ const history = createHistory();
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
 
-const render = messages => {
+const render = (messages, theme) => {
   ReactDOM.render(
     <Provider store={store}>
       <LanguageProvider messages={messages}>
         <ConnectedRouter history={history}>
-          <App />
+          <ThemeProvider theme={theme}>
+            <App />
+          </ThemeProvider>
         </ConnectedRouter>
       </LanguageProvider>
     </Provider>,
@@ -69,7 +74,7 @@ if (module.hot) {
   // have to be constants at compile-time
   module.hot.accept(['./i18n', 'containers/App'], () => {
     ReactDOM.unmountComponentAtNode(MOUNT_NODE);
-    render(translationMessages);
+    render(translationMessages, currentTheme);
   });
 }
 
@@ -84,12 +89,12 @@ if (!window.Intl) {
         import('intl/locale-data/jsonp/de.js'),
       ]),
     )
-    .then(() => render(translationMessages))
+    .then(() => render(translationMessages, currentTheme))
     .catch(err => {
       throw err;
     });
 } else {
-  render(translationMessages);
+  render(translationMessages, currentTheme);
 }
 
 // Install ServiceWorker and AppCache in the end since

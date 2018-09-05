@@ -19,6 +19,8 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
+import colors from '../../colors';
+
 const AppWrapper = styled.div`
   margin: 0 auto;
   padding: 0;
@@ -26,7 +28,14 @@ const AppWrapper = styled.div`
   max-width: 100%;
   min-height: 100%;
   flex-direction: column;
+  background: ${props => props.theme.colorBackgroundNeutralLight};
 `;
+
+App.defaultProps = {
+  theme: {
+    colorBackgroundNeutralLight: colors.colorBackgroundNeutralLight,
+  },
+};
 
 export default function App() {
   return (
