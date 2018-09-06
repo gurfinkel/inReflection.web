@@ -6,12 +6,33 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-  home: {
-    id: 'boilerplate.components.Header.home',
-    defaultMessage: 'Home',
-  },
-  features: {
-    id: 'boilerplate.components.Header.features',
-    defaultMessage: 'Features',
-  },
+  items: [
+    {
+      id: 'inreflection.components.Header.findStylists',
+      defaultMessage: 'Find stylists',
+      url: '/find',
+    },
+    {
+      id: 'inreflection.components.Header.howItWorks',
+      defaultMessage: 'How it works',
+      url: '/howItWorks',
+      items: [
+        {
+          id: 'inreflection.components.Header.forCustomers',
+          defaultMessage: 'For customers',
+          url: '/howItWorks',
+        },
+        {
+          id: 'inreflection.components.Header.forStylists',
+          defaultMessage: 'For stylists',
+          url: '/forStylists',
+        },
+      ],
+    },
+    {
+      id: 'inreflection.components.Header.features',
+      defaultMessage: 'FAQ',
+      url: '/faq',
+    },
+  ],
 });

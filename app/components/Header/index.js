@@ -9,29 +9,16 @@ import messages from './messages';
 class Header extends React.Component {
   render() {
     const logo = {
+      alt: 'inReflection',
       src: LogoPicture,
-      alt: 'Logo',
     };
 
     const title = {
-      href: '/',
       text: 'inReflection',
+      url: '/',
     };
 
-    const headerItems = [
-      {
-        id: 1,
-        href: '/',
-        message: messages.home,
-      },
-      {
-        id: 2,
-        href: '/features',
-        message: messages.features,
-      },
-    ];
-
-    return <NavBar logo={logo} title={title} items={headerItems} locale />;
+    return <NavBar logo={logo} title={title} items={messages.items} locale />;
   }
 }
 

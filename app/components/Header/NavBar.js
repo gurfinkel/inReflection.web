@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { FormattedMessage } from 'react-intl';
 
 import LocaleToggle from 'containers/LocaleToggle';
 
@@ -44,9 +43,7 @@ const NavBarRightPartStyled = styled.div`
 
 function NavBar(props) {
   const content = props.items.map(item => (
-    <HeaderLink key={`item-${item.id}`} to={item.href}>
-      <FormattedMessage {...item.message} />
-    </HeaderLink>
+    <HeaderLink key={`item-${item.id}`} message={item} />
   ));
 
   return (
@@ -54,7 +51,7 @@ function NavBar(props) {
       <NavBarLeftPartStyled>
         {props.logo && <Logo src={props.logo.src} alt={props.logo.alt} />}
         {props.title && (
-          <LogoTitle href={props.title.href}>{props.title.text}</LogoTitle>
+          <LogoTitle href={props.title.url}>{props.title.text}</LogoTitle>
         )}
       </NavBarLeftPartStyled>
       <NavBarCentralPartStyled>{content}</NavBarCentralPartStyled>

@@ -4,7 +4,7 @@ import NormalA from 'components/A';
 import colors from '../../colors';
 
 const LogoTitle = NormalA.extend`
-  padding: 2em 200px 2em 10px;
+  padding: 1em;
   text-decoration: none;
   color: ${props => props.theme.colorTextHeader};
 `;

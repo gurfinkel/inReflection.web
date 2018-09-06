@@ -1,15 +1,16 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import colors from '../../colors';
 
-const HeaderLink = styled(Link)`
+const LinkStyled = styled(Link)`
+  flex: 1;
   display: inline-flex;
-  padding: 0.25em 2em;
-  margin: 1em;
+  margin: 1em 1em 3px 1em;
   text-decoration: none;
-  border-radius: 4px;
   -webkit-font-smoothing: antialiased;
   -webkit-touch-callout: none;
   user-select: none;
@@ -18,8 +19,7 @@ const HeaderLink = styled(Link)`
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-size: 16px;
-  border: 2px solid #41addd;
-  color: #41addd;
+  color: ${props => props.theme.colorTextHeader};
 
   &:active {
     background: #41addd;
@@ -27,13 +27,40 @@ const HeaderLink = styled(Link)`
   }
 `;
 
+const UnderlineStyled = styled.div`
+  margin: 3px 1em;
+  flex: 1;
+  display: flex;
+  border-bottom: 3px solid ${props => props.theme.colorBackgroundHeader};
+`;
+
+const ContainerStyled = styled.div`
+  flex-direction: column;
+  &:hover ${UnderlineStyled} {
+    border-bottom: 3px solid #41addd;
+  }
+`;
+
+function HeaderLink(props) {
+  return (
+    <ContainerStyled>
+      <LinkStyled to={props.message.url}>
+        <FormattedMessage {...props.message} />
+      </LinkStyled>
+      <UnderlineStyled />
+    </ContainerStyled>
+  );
+}
+
 HeaderLink.defaultProps = {
   theme: {
+    colorBackgroundHeader: colors.colorBackgroundHeader,
     colorTextHeader: colors.colorTextHeader,
   },
 };
 
 HeaderLink.propTypes = {
+  message: PropTypes.object,
   theme: PropTypes.object,
 };
 
