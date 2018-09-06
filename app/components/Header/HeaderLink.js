@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-export default styled(Link)`
+import colors from '../../colors';
+
+const HeaderLink = styled(Link)`
   display: inline-flex;
   padding: 0.25em 2em;
   margin: 1em;
@@ -23,3 +26,15 @@ export default styled(Link)`
     color: #fff;
   }
 `;
+
+HeaderLink.defaultProps = {
+  theme: {
+    colorTextHeader: colors.colorTextHeader,
+  },
+};
+
+HeaderLink.propTypes = {
+  theme: PropTypes.object,
+};
+
+export default HeaderLink;

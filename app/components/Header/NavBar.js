@@ -21,6 +21,27 @@ const NavBarStyled = styled.div`
   height: ${APPBAR_HEIGHT};
 `;
 
+const NavBarLeftPartStyled = styled.div`
+  justify-content: flex-start;
+  align-items: center;
+  flex: 1;
+  display: flex;
+`;
+
+const NavBarCentralPartStyled = styled.div`
+  justify-content: center;
+  align-items: flex-end;
+  flex: 1;
+  display: flex;
+`;
+
+const NavBarRightPartStyled = styled.div`
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+  display: flex;
+`;
+
 function NavBar(props) {
   const content = props.items.map(item => (
     <HeaderLink key={`item-${item.id}`} to={item.href}>
@@ -30,12 +51,16 @@ function NavBar(props) {
 
   return (
     <NavBarStyled>
-      {props.logo && <Logo src={props.logo.src} alt={props.logo.alt} />}
-      {props.title && (
-        <LogoTitle href={props.title.href}>{props.title.text}</LogoTitle>
-      )}
-      {content}
-      {props.locale && <LocaleToggle />}
+      <NavBarLeftPartStyled>
+        {props.logo && <Logo src={props.logo.src} alt={props.logo.alt} />}
+        {props.title && (
+          <LogoTitle href={props.title.href}>{props.title.text}</LogoTitle>
+        )}
+      </NavBarLeftPartStyled>
+      <NavBarCentralPartStyled>{content}</NavBarCentralPartStyled>
+      <NavBarRightPartStyled>
+        {props.locale && <LocaleToggle />}
+      </NavBarRightPartStyled>
     </NavBarStyled>
   );
 }
