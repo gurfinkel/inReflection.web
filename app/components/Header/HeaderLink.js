@@ -2,9 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import colors from '../../colors';
+
+function linkAnimation(props) {
+  return keyframes`
+    100% {
+      color: ${props.theme.colorSecondaryButtonHover};
+    }
+  `;
+}
 
 const LinkStyled = styled(Link)`
   flex: 1;
@@ -27,6 +35,14 @@ const LinkStyled = styled(Link)`
   }
 `;
 
+function underlineAnimation(props) {
+  return keyframes`
+    100% {
+      border-color: ${props.theme.colorSecondaryButtonHover};
+    }
+  `;
+}
+
 const UnderlineStyled = styled.div`
   margin: 3px 1em;
   flex: 1;
@@ -36,8 +52,13 @@ const UnderlineStyled = styled.div`
 
 const ContainerStyled = styled.div`
   flex-direction: column;
-  &:hover ${UnderlineStyled} {
-    border-bottom: 3px solid #41addd;
+  &:hover {
+    ${/* sc-custom 'div' */ LinkStyled} {
+      animation: ${props => linkAnimation(props)} 1s ease-in-out;
+    }
+    ${/* sc-custom 'p' */ UnderlineStyled} {
+      animation: ${props => underlineAnimation(props)} 1s ease-in-out;
+    }
   }
 `;
 
@@ -56,6 +77,7 @@ HeaderLink.defaultProps = {
   theme: {
     colorBackgroundHeader: colors.colorBackgroundHeader,
     colorTextHeader: colors.colorTextHeader,
+    colorSecondaryButtonHover: colors.colorSecondaryButtonHover,
   },
 };
 
