@@ -3,10 +3,10 @@
   "boilerplate.components.Footer.license.message":
     "This project is licensed under the MIT license.",
 
-  "inReflection.components.Header.findStylists": "Find stylists",
-  "inReflection.components.Header.howItWorks": "How it works",
-  "inReflection.components.Header.forCustomers": "For customers",
-  "inReflection.components.Header.forStylists": "For stylists",
+  "inReflection.components.Header.findStylists": "Найти стилистов",
+  "inReflection.components.Header.howItWorks": "Как это работает",
+  "inReflection.components.Header.forCustomers": "Для соискателей",
+  "inReflection.components.Header.forStylists": "Для стилистов",
   "inReflection.components.Header.faq": "FAQ",
 
   "boilerplate.containers.FeaturePage.css.header": "Features",

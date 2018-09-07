@@ -8,29 +8,29 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   items: [
     {
-      id: 'inreflection.components.Header.findStylists',
+      id: 'inReflection.components.Header.findStylists',
       defaultMessage: 'Find stylists',
       url: '/find',
     },
     {
-      id: 'inreflection.components.Header.howItWorks',
+      id: 'inReflection.components.Header.howItWorks',
       defaultMessage: 'How it works',
       url: '/howItWorks',
       items: [
         {
-          id: 'inreflection.components.Header.forCustomers',
+          id: 'inReflection.components.Header.forCustomers',
           defaultMessage: 'For customers',
           url: '/howItWorks',
         },
         {
-          id: 'inreflection.components.Header.forStylists',
+          id: 'inReflection.components.Header.forStylists',
           defaultMessage: 'For stylists',
           url: '/forStylists',
         },
       ],
     },
     {
-      id: 'inreflection.components.Header.features',
+      id: 'inReflection.components.Header.faq',
       defaultMessage: 'FAQ',
       url: '/faq',
     },

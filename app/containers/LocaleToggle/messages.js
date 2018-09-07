@@ -7,11 +7,11 @@ import { defineMessages } from 'react-intl';
 
 export default defineMessages({
   en: {
-    id: 'boilerplate.containers.LocaleToggle.en',
+    id: 'inReflection.containers.LocaleToggle.en',
     defaultMessage: 'en',
   },
-  de: {
-    id: 'boilerplate.containers.LocaleToggle.de',
-    defaultMessage: 'de',
+  ru: {
+    id: 'inReflection.containers.LocaleToggle.ru',
+    defaultMessage: 'ru',
   },
 });
