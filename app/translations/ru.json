@@ -49,5 +49,5 @@
   "inReflection.containers.LocaleToggle.en": "English",
   "inReflection.containers.LocaleToggle.ru": "Русский",
 
-  "boilerplate.containers.NotFoundPage.header": "Page not found."
+  "inReflection.containers.NotFoundPage.header": "Страница не найдена."
 }
