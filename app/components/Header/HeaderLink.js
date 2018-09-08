@@ -14,11 +14,20 @@ function linkAnimation(props) {
   `;
 }
 
+const beforeAnimation = keyframes`
+  100% {
+    transform: translateY(0);
+  }
+`;
+
 const LinkStyled = styled(Link)`
-  flex: 1;
-  display: inline-flex;
-  margin: 1em 1em 3px 1em;
+  margin: 0 1em 1px 1em;
   text-decoration: none;
+  display: inline-block;
+  vertical-align: middle;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  overflow: hidden;
   -webkit-font-smoothing: antialiased;
   -webkit-touch-callout: none;
   user-select: none;
@@ -28,48 +37,36 @@ const LinkStyled = styled(Link)`
   font-weight: bold;
   font-size: 16px;
   color: ${props => props.theme.colorTextHeader};
+  transform: perspective(1px) translateZ(0);
 
-  &:active {
-    background: #41addd;
-    color: #fff;
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 4px;
+    background: ${props => props.theme.colorSecondaryButtonHover};
+    transform: translateY(4px);
   }
-`;
 
-function underlineAnimation(props) {
-  return keyframes`
-    100% {
-      border-color: ${props.theme.colorSecondaryButtonHover};
-    }
-  `;
-}
+  &:hover:before,
+  :focus:before,
+  :active:before {
+    animation: ${beforeAnimation} 0.3s ease-out forwards;
+  }
 
-const UnderlineStyled = styled.div`
-  margin: 3px 1em;
-  flex: 1;
-  display: flex;
-  border-bottom: 3px solid ${props => props.theme.colorBackgroundHeader};
-`;
-
-const ContainerStyled = styled.div`
-  flex-direction: column;
   &:hover {
-    ${/* sc-custom 'div' */ LinkStyled} {
-      animation: ${props => linkAnimation(props)} 1s ease-in-out;
-    }
-    ${/* sc-custom 'p' */ UnderlineStyled} {
-      animation: ${props => underlineAnimation(props)} 1s ease-in-out;
-    }
+    animation: ${props => linkAnimation(props)} 0.2s ease-out forwards;
   }
 `;
 
 function HeaderLink(props) {
   return (
-    <ContainerStyled>
-      <LinkStyled to={props.message.url}>
-        <FormattedMessage {...props.message} />
-      </LinkStyled>
-      <UnderlineStyled />
-    </ContainerStyled>
+    <LinkStyled to={props.message.url}>
+      <FormattedMessage {...props.message} />
+    </LinkStyled>
   );
 }
 
