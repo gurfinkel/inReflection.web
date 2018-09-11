@@ -7,7 +7,7 @@ import LocaleToggle from 'containers/LocaleToggle';
 import colors from '../../colors';
 
 import HeaderLink from './HeaderLink';
-import HeaderSelect from './HeaderSelect';
+import HeaderMenu from './HeaderMenu';
 import Logo from './Logo';
 import LogoTitle from './LogoTitle';
 
@@ -46,11 +46,7 @@ function NavBar(props) {
   const content = props.items.map(
     item =>
       item.items && item.items.length ? (
-        <HeaderSelect
-          key={`item-${item.id}`}
-          message={item}
-          items={item.items}
-        />
+        <HeaderMenu key={`item-${item.id}`} message={item} items={item.items} />
       ) : (
         <HeaderLink key={`item-${item.id}`} message={item} />
       ),
