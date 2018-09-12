@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 
@@ -125,14 +126,16 @@ const MenuHeaderStyled = styled.div`
 
 function HeaderMenu(props) {
   const content = props.items.map(item => (
-    <MenuItemStyled key={`item-${item.id}`} to={item.url} message={item}>
-      {item.defaultMessage}
+    <MenuItemStyled key={`item-${item.id}`} to={item.url}>
+      <FormattedMessage {...item} />
     </MenuItemStyled>
   ));
 
   return (
     <ContainerStyled>
-      <MenuHeaderStyled>{props.message.defaultMessage}</MenuHeaderStyled>
+      <MenuHeaderStyled>
+        <FormattedMessage {...props.message} />
+      </MenuHeaderStyled>
       <MenuContainerStyled>{content}</MenuContainerStyled>
     </ContainerStyled>
   );
