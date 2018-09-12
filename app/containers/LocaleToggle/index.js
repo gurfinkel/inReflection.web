@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
-import Toggle from 'components/Toggle';
+import HeaderSelect from 'components/Header/HeaderSelect';
 import Wrapper from './Wrapper';
 import messages from './messages';
 import { appLocales } from '../../i18n';
@@ -21,7 +21,7 @@ export class LocaleToggle extends React.PureComponent {
   render() {
     return (
       <Wrapper>
-        <Toggle
+        <HeaderSelect
           value={this.props.locale}
           values={appLocales}
           messages={messages}
