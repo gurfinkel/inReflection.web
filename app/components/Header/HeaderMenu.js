@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 
 import colors from '../../colors';
+import styleConst from '../../styleConstants';
 
 const MenuItemStyled = styled(Link)`
   margin: 12px 1em 5px 1em;
@@ -12,9 +13,9 @@ const MenuItemStyled = styled(Link)`
   vertical-align: middle;
   position: relative;
   cursor: pointer;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: bold;
-  font-size: 16px;
+  font-family: ${styleConst.baseFontFamily};
+  font-weight: ${styleConst.baseFontWeight};
+  font-size: ${styleConst.baseFontSize};
   color: ${props => props.theme.colorTextHeader};
   transform: perspective(1px) translateZ(0);
 
@@ -24,10 +25,10 @@ const MenuItemStyled = styled(Link)`
 `;
 
 const MenuContainerStyled = styled.div`
-  display: none;
-  flex-direction: column;
   position: absolute;
   margin-top: 24px;
+  display: none;
+  flex-direction: column;
   background-color: ${props => props.theme.colorBackgroundHeader};
 `;
 
@@ -75,24 +76,24 @@ const MenuHeaderStyled = styled.div`
   user-select: none;
   cursor: pointer;
   outline: 0;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: bold;
-  font-size: 16px;
+  font-family: ${styleConst.baseFontFamily};
+  font-weight: ${styleConst.baseFontWeight};
+  font-size: ${styleConst.baseFontSize};
   color: ${props => props.theme.colorTextHeader};
   transform: perspective(1px) translateZ(0);
 
   &:after {
-    box-sizing: border-box;
+    content: '';
     height: 7px;
     width: 7px;
+    margin: 5px;
+    display: inline-flex;
+    box-sizing: border-box;
     border-style: solid;
-    border-color: white;
+    border-color: ${props => props.theme.colorTextHeader};
     border-width: 0px 3px 3px 0px;
     transform: rotate(45deg);
     transition: border-width 150ms ease-in-out;
-    content: '';
-    margin: 5px;
-    display: inline-flex;
   }
 
   &:before {
