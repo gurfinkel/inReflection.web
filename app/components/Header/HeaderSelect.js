@@ -124,26 +124,58 @@ const MenuHeaderStyled = styled.div`
   }
 `;
 
-function HeaderSelect(props) {
-  let content = <option>--</option>;
-
-  // If we have items, render them
-  if (props.values) {
-    content = props.values.map(value => (
-      <MenuItemStyled key={value} value={value}>
-        <FormattedMessage {...props.messages[value]} />
-      </MenuItemStyled>
-    ));
-  }
-
+function MenuItem(props) {
   return (
-    <ContainerStyled>
-      <MenuHeaderStyled value={props.value} onChange={props.onToggle}>
-        {props.values[0]}
-      </MenuHeaderStyled>
-      <MenuContainerStyled>{content}</MenuContainerStyled>
-    </ContainerStyled>
+    <MenuItemStyled value={props.value} onClick={props.onOptionSelect}>
+      <FormattedMessage {...props.message} />
+    </MenuItemStyled>
   );
+}
+
+/* eslint-disable react/no-unused-prop-types */
+MenuItem.propTypes = {
+  onOptionSelect: PropTypes.func,
+  value: PropTypes.string,
+  message: PropTypes.object,
+  target: PropTypes.object,
+};
+
+class HeaderSelect extends React.PureComponent {
+  state = {
+    open: null,
+  };
+
+  handleOpenCard = e => {
+    this.setState({ open: e.target });
+  };
+
+  render() {
+    let content = '<option>--</option>';
+
+    if (this.props.values) {
+      content = this.props.values.map(value => (
+        <MenuItem
+          key={`item-${value}`}
+          onOptionSelect={this.handleOpenCard}
+          value={value}
+          message={this.props.messages[value]}
+          target={this.state.open}
+        />
+      ));
+    }
+
+    return (
+      <ContainerStyled>
+        <MenuHeaderStyled
+          value={this.props.value}
+          onChange={this.props.onToggle}
+        >
+          <FormattedMessage {...this.props.messages[this.props.value]} />
+        </MenuHeaderStyled>
+        <MenuContainerStyled>{content}</MenuContainerStyled>
+      </ContainerStyled>
+    );
+  }
 }
 
 HeaderSelect.defaultProps = {
