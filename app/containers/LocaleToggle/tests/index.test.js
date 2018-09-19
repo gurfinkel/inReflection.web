@@ -28,7 +28,7 @@ describe('<LocaleToggle />', () => {
     expect(renderedComponent.contains(<LocaleToggle />)).toBe(true);
   });
 
-  it('should present the default `en` english language option', () => {
+  it('should present the default `en` english language span', () => {
     const renderedComponent = mount(
       <Provider store={store}>
         <LanguageProvider messages={translationMessages}>
@@ -36,9 +36,8 @@ describe('<LocaleToggle />', () => {
         </LanguageProvider>
       </Provider>,
     );
-    expect(renderedComponent.contains(<option value="en">en</option>)).toBe(
-      true,
-    );
+
+    expect(renderedComponent.contains(<span>English</span>)).toBe(true);
   });
 
   describe('mapDispatchToProps', () => {
@@ -52,8 +51,8 @@ describe('<LocaleToggle />', () => {
       it('should dispatch changeLocale when called', () => {
         const dispatch = jest.fn();
         const result = mapDispatchToProps(dispatch);
-        const locale = 'de';
-        const evt = { target: { value: locale } };
+        const locale = 'ru';
+        const evt = { value: locale };
         result.onLocaleToggle(evt);
         expect(dispatch).toHaveBeenCalledWith(changeLocale(locale));
       });
